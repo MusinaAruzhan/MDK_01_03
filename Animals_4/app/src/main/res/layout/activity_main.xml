@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+        <!-- Панель навигации: Выбор локации зоопарка -->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/btnSavanna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_light"
+                android:onClick="btnSavannaClick"
+                android:text="@string/button_savanna"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnJungle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_dark"
+                android:onClick="btnJungleClick"
+                android:text="@string/button_jungle"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnOcean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_dark"
+                android:onClick="btnOceanClick"
+                android:text="@string/button_ocean"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Игровое поле (Контейнер локаций) -->
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Локация: Океан -->
+            <ImageView
+                android:id="@+id/imageOcean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
+
+            <!-- Локация: Джунгли -->
+            <ImageView
+                android:id="@+id/imageJungle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
+
+            <!-- Локация: Саванна (Интерактивный слой) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutSavanna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/imageSavanna"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Прозрачные кнопки поверх животных в Саванне -->
+
+                <Button
+                    android:id="@+id/btnLion"
+                    android:layout_width="93dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="260dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onLionClick"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnGiraffe"
+                    android:layout_width="99dp"
+                    android:layout_height="123dp"
+                    android:layout_marginStart="109dp"
+                    android:layout_marginTop="212dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onGiraffeClick"
+                    app:layout_constraintStart_toStartOf="@id/imageSavanna"
+                    app:layout_constraintTop_toTopOf="@id/imageSavanna" />
+
+                <Button
+                    android:id="@+id/btnElephant"
+                    android:layout_width="132dp"
+                    android:layout_height="93dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="296dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onElephantClick"
+                    app:layout_constraintEnd_toEndOf="@id/imageSavanna"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@id/btnLion"
+                    app:layout_constraintTop_toTopOf="@id/imageSavanna" />
+
+                <Button
+                    android:id="@+id/btnMonkey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onMonkeyClick"
+                    app:layout_constraintBottom_toBottomOf="@id/imageSavanna"
+                    app:layout_constraintEnd_toEndOf="@id/imageSavanna"
+                    app:layout_constraintTop_toBottomOf="@id/btnElephant"
+                    app:layout_constraintVertical_bias="0.712" />
+
+                <Button
+                    android:id="@+id/btnBaobab"
+                    android:layout_width="157dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onBaobabClick"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
